@@ -12,9 +12,9 @@
 /* ── Design tokens ──────────────────────────────────────────────── */
 :root {
   /* Paper tones */
-  --paper:        #f2ead8;
-  --paper-dark:   #e8ddc4;
-  --paper-deep:   #d9c9aa;
+  --paper:        #b7af9b;
+  --paper-dark:   #e3cc96;
+  --paper-deep:   #c3a873;
   --paper-crease: #cbb98a;
 
   /* Ink tones */

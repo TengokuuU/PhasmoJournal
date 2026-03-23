@@ -73,12 +73,16 @@ export interface BehaviorSection {
   items: BehaviorItem[];
 }
 
-export interface GhostCard {
+/** Static ghost definition as stored in data — no runtime state */
+export interface GhostDefinition {
   id: GhostId;
   name: string;
   evidence: EvidenceKey[];
   trait: string;
   isNew?: boolean;
-  /** Derived by the deduction engine — not set in data */
+}
+
+/** Ghost card as used in the template — extends definition with computed state */
+export interface GhostCard extends GhostDefinition {
   state: 'possible' | 'eliminated' | 'likely';
 }

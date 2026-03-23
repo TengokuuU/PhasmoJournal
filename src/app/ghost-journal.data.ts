@@ -8,7 +8,7 @@ import {
   BehaviorRule,
   BehaviorSection,
   EvidenceItem,
-  GhostCard,
+  GhostDefinition,
 } from './ghost-journal.types';
 
 /* ──────────────────────────────────────────────────────────────────
@@ -286,7 +286,7 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
    GHOST DATA (27 ghosts)
    ────────────────────────────────────────────────────────────────── */
 
-export const GHOST_DATA: Omit<GhostCard, 'state'>[] = [
+export const GHOST_DATA: GhostDefinition[] = [
   {
     id: 'spirit',      name: 'Spirit',
     evidence: ['emf5', 'spirit_box', 'ghost_writing'],
