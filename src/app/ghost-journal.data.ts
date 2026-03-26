@@ -41,22 +41,22 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
       {
         key: 'hunt_above_50', active: false,
         desc: 'Hunted between 50–70% sanity',
-        effect: 'Eliminates: Shade (≤35%), Yokai (≤50%), Yurei (≤50%), Myling (≤50%), Thaye (aged, very low)',
+        effect: 'Eliminates: Shade (≤35%), Yokai (≤50%), Yurei (≤50%), Myling (≤50%), Thaye (aged)',
       },
       {
         key: 'hunt_never_above_35', active: false,
-        desc: 'Ghost never hunted above ~35% sanity despite low average',
-        effect: 'Eliminates: Demon, Obambo (aggressive), Gallu, Yokai, Yurei, Myling — Points to: Shade',
+        desc: 'Ghost never hunted above ~35% sanity despite the opportunity',
+        effect: 'Eliminates: Demon, Obambo (aggressive), Gallu, Yokai, Yurei, Myling',
       },
       {
         key: 'refused_hunt_low_sanity', active: false,
         desc: 'Refused to hunt despite very low sanity',
-        effect: 'Eliminates most ghosts — Points to: Thaye (aged), Obambo (calm, threshold ~10%)',
+        effect: 'Eliminates most ghosts — consistent with: Thaye (aged), Obambo (calm, ~10% threshold), Shade',
       },
       {
         key: 'hunt_no_warning_sounds', active: false,
-        desc: 'Hunt started with almost no sound / footsteps',
-        effect: 'Eliminates all ghosts except: Myling (near-silent hunts)',
+        desc: 'Hunt footsteps were nearly inaudible throughout',
+        effect: 'Eliminates all ghosts except Myling and Mimic (Mimic can copy Myling)',
       },
     ],
   },
@@ -65,67 +65,37 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
     items: [
       {
         key: 'normal_ghost_speed', active: false,
-        desc: 'Ghost moved at base movement speed during the entire hunt',
-        effect: 'Eliminates: Raiju, Deogen, Moroi, Jinn (in LoS), Revenant (while chasing), Hantu (cold rooms), Dayan',
-      },
-      {
-        key: 'hunt_fast_chase_slow_roam', active: false,
-        desc: 'Extremely fast when chasing, crawls otherwise',
-        effect: 'Eliminates all ghosts except: Revenant (~3 m/s chase, ~1 m/s roam)',
+        desc: 'Ghost moved at base speed during the entire hunt with no deviations',
+        effect: 'Eliminates: Raiju, Deogen, Moroi, Jinn (LoS), Revenant (chasing), Hantu (cold rooms), Dayan',
       },
       {
         key: 'consistent_speed_entire_hunt', active: false,
-        desc: 'Ghost maintained consistent speed throughout the entire hunt',
-        effect: 'Eliminates: Revenant, Dayan, Obambo, Gallu, Moroi (speed scales with sanity)',
-      },
-      {
-        key: 'hunt_speed_changed_mid_hunt', active: false,
-        desc: 'Ghost speed changed noticeably mid-hunt',
-        effect: 'Eliminates all ghosts except: Obambo (state flip), Dayan (player movement), Gallu',
+        desc: 'Ghost speed never changed noticeably mid-hunt',
+        effect: 'Eliminates: Revenant, Dayan, Obambo, Gallu, Moroi',
       },
       {
         key: 'hunt_slowed_when_player_still', active: false,
-        desc: 'Ghost slowed down when you stood perfectly still',
-        effect: 'Eliminates all ghosts except: Dayan (1.2 m/s when closest player is still)',
-      },
-      {
-        key: 'ghost_faster_near_moving_player', active: false,
-        desc: 'Ghost accelerated when nearby player started walking',
-        effect: 'Eliminates all ghosts except: Dayan (2.25 m/s when player walks within 10m)',
-      },
-      {
-        key: 'speed_unaffected_by_electronics', active: false,
-        desc: 'Ghost speed was unaffected by nearby active electronics',
-        effect: 'Eliminates: Raiju',
-      },
-      {
-        key: 'hunt_faster_near_electronics', active: false,
-        desc: 'Ghost faster near active electronics',
-        effect: 'Eliminates all ghosts except: Raiju',
-      },
-      {
-        key: 'hunt_fast_chases_slow_close', active: false,
-        desc: 'Fast during hunt but dramatically slowed when right on top of you',
-        effect: 'Eliminates all ghosts except: Deogen (~0.4 m/s at close range)',
+        desc: 'Ghost visibly slowed when the nearest player stood perfectly still',
+        effect: 'Eliminates all ghosts except Dayan and Mimic (Mimic can copy Dayan)',
       },
       {
         key: 'no_slowdown_when_close', active: false,
         desc: 'Ghost maintained or increased speed even at point-blank range',
-        effect: 'Eliminates: Deogen (always slows to ~0.4 m/s when right next to a player)',
+        effect: 'Eliminates: Deogen (always slows to ~0.4 m/s when it reaches a player)',
       },
       {
-        key: 'ghost_faster_at_low_sanity', active: false,
-        desc: 'Ghost noticeably faster when team sanity was very low',
-        effect: 'Eliminates all others — Points to: Moroi (fastest at very low sanity), Jinn',
+        key: 'speed_unaffected_by_electronics', active: false,
+        desc: 'Ghost speed was unaffected near active electronics',
+        effect: 'Eliminates: Raiju',
       },
       {
         key: 'speed_unaffected_by_sanity', active: false,
-        desc: 'Ghost speed was the same regardless of team sanity level',
+        desc: 'Ghost speed stayed the same across high and very low team sanity',
         effect: 'Eliminates: Moroi (speed scales directly with sanity)',
       },
       {
         key: 'ghost_same_speed_warm_cold_rooms', active: false,
-        desc: 'Ghost moved at identical speed in cold and warm rooms',
+        desc: 'Ghost moved at the same speed in both cold and warm rooms',
         effect: 'Eliminates: Hantu (significantly faster in cold rooms)',
       },
     ],
@@ -135,33 +105,28 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
     items: [
       {
         key: 'hunt_lasted_full_duration', active: false,
-        desc: 'Hunt lasted the expected full duration',
+        desc: 'Every hunt lasted the expected full duration',
         effect: 'Eliminates: Obambo (aggressive-state hunts end ~20% early)',
       },
       {
         key: 'hunt_duration_20pct_short', active: false,
-        desc: 'Hunt lasted ~20% shorter than expected',
-        effect: 'Eliminates all ghosts except: Obambo (aggressive state hunts end early)',
-      },
-      {
-        key: 'ghost_phases_high_low_activity', active: false,
-        desc: 'Distinct phases of high vs low paranormal activity (~2 min each)',
-        effect: 'Eliminates all ghosts except: Obambo (calm/aggressive cycle every 2 minutes)',
+        desc: 'Hunt ended noticeably early — roughly 20% shorter than expected',
+        effect: 'Consistent with: Obambo (aggressive state) — Mimic can also copy this',
       },
       {
         key: 'activity_was_constant', active: false,
         desc: 'Activity level stayed roughly constant throughout the investigation',
-        effect: 'Eliminates: Obambo (cycles calm↔aggressive), Thaye (activity decreases over time)',
+        effect: 'Eliminates: Obambo (calm↔aggressive cycle), Thaye (activity decreases over time)',
       },
-    ],
-  },
-  {
-    title: 'Obambo phase tells',
-    items: [
       {
         key: 'no_phase_cycling', active: false,
-        desc: 'No noticeable phases of high vs low activity — behaviour was steady',
+        desc: 'No distinct phases of high vs low activity — behaviour was steady throughout',
         effect: 'Eliminates: Obambo',
+      },
+      {
+        key: 'activity_did_not_decrease', active: false,
+        desc: 'Activity and aggression remained consistent or increased over time',
+        effect: 'Eliminates: Thaye (always becomes weaker as the investigation progresses)',
       },
     ],
   },
@@ -169,29 +134,19 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
     title: 'Gallu — protective equipment',
     items: [
       {
-        key: 'incense_sped_ghost_up', active: false,
-        desc: 'Using incense / smudge stick made the ghost faster next hunt',
-        effect: 'Eliminates all ghosts except: Gallu (enters enraged state when incensed)',
-      },
-      {
         key: 'incense_worked_normally', active: false,
         desc: 'Smudge stick / incense slowed or repelled the ghost as expected',
         effect: 'Eliminates: Gallu (incense triggers enrage rather than repelling it)',
       },
       {
-        key: 'crucifix_felt_weaker', active: false,
-        desc: 'Crucifix / incense felt less effective than usual',
-        effect: 'Eliminates most ghosts — Points to: Gallu (enraged state weakens protective equipment)',
-      },
-      {
         key: 'crucifix_worked_at_full_range', active: false,
         desc: 'Crucifix stopped hunts reliably at its full normal range',
-        effect: 'Eliminates: Demon (smaller crucifix effective radius), Gallu (enraged weakens equipment)',
+        effect: 'Eliminates: Demon (smaller effective radius), Gallu (enraged state weakens equipment)',
       },
       {
         key: 'gallu_ignored_salt', active: false,
-        desc: 'Stepped in first salt pile, then ignored all subsequent piles',
-        effect: 'Eliminates all ghosts except: Gallu (salt triggers enraged, then avoids salt)',
+        desc: 'Stepped in the first salt pile, then clearly avoided all subsequent piles',
+        effect: 'Eliminates all ghosts except Gallu and Mimic (Mimic can copy Gallu)',
       },
     ],
   },
@@ -200,13 +155,8 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
     items: [
       {
         key: 'changed_room', active: false,
-        desc: 'Ghost changed its ghost room',
+        desc: 'Ghost changed its ghost room during the investigation',
         effect: 'Eliminates: Goryo',
-      },
-      {
-        key: 'stayed_in_one_room', active: false,
-        desc: 'Ghost never left or changed its ghost room',
-        effect: 'No eliminations on its own, but consistent with: Goryo',
       },
       {
         key: 'interacted_far', active: false,
@@ -215,18 +165,8 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
       },
       {
         key: 'dots_not_on_camera', active: false,
-        desc: 'D.O.T.S visible to naked eye (not only through camera)',
+        desc: 'D.O.T.S visible to the naked eye (not only through a camera)',
         effect: 'Eliminates: Goryo (its D.O.T.S only show through a video camera)',
-      },
-      {
-        key: 'dots_only_on_camera', active: false,
-        desc: 'D.O.T.S were only visible through a video camera, not the naked eye',
-        effect: 'Points strongly to: Goryo',
-      },
-      {
-        key: 'breaker_off_repeatedly', active: false,
-        desc: 'Breaker turned off repeatedly',
-        effect: 'Eliminates most ghosts — Points to: Jinn, Mare',
       },
       {
         key: 'breaker_left_alone', active: false,
@@ -245,43 +185,33 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
       },
       {
         key: 'stepped_in_salt', active: false,
-        desc: 'Ghost stepped in salt (clean footprint)',
+        desc: 'Ghost stepped in a salt pile (clean footprint visible)',
         effect: 'Eliminates: Wraith',
       },
       {
         key: 'salt_undisturbed_entire_investigation', active: false,
-        desc: 'Salt piles near ghost room were never disturbed',
-        effect: 'Points to: Wraith — does not eliminate others (ghosts can simply avoid salt)',
-      },
-      {
-        key: 'threw_many_objects_at_once', active: false,
-        desc: 'Hurled many objects simultaneously',
-        effect: 'Eliminates all ghosts except: Poltergeist',
+        desc: 'Salt piles near the ghost room were never disturbed',
+        effect: 'Consistent with: Wraith — does not eliminate others (any ghost may simply avoid salt)',
       },
       {
         key: 'threw_one_object_at_a_time', active: false,
-        desc: 'Threw objects one at a time only — no multi-object throws observed',
-        effect: 'Eliminates: Poltergeist (defining ability is multi-object throws)',
+        desc: 'Only threw one object at a time — no multi-object throws observed',
+        effect: 'Eliminates: Poltergeist (defining ability is throwing multiple objects simultaneously)',
       },
       {
         key: 'six_fingered_print', active: false,
         desc: 'Found a six-fingered fingerprint',
-        effect: 'Eliminates all ghosts except: Obake (unique fingerprint type)',
-      },
-      {
-        key: 'fingerprint_disappeared_fast', active: false,
-        desc: 'Fingerprint vanished moments after being left',
-        effect: 'Eliminates all ghosts except: Obake (25% chance to erase own prints)',
+        effect: 'Consistent with: Obake — Mimic can copy Obake. Does not eliminate others.',
       },
       {
         key: 'all_fingerprints_persisted', active: false,
-        desc: 'All fingerprints found stayed visible for the normal duration',
+        desc: 'All fingerprints stayed visible for a normal duration',
         effect: 'Eliminates: Obake (25% chance to erase its own prints quickly)',
       },
       {
         key: 'no_fingerprints_found_at_all', active: false,
-        desc: 'No fingerprints found at all despite many interactions',
-        effect: 'Eliminates: Obake (Obake always leaves UV evidence as it is a core evidence type)',
+        desc: 'No fingerprints found despite many door/light interactions',
+        effect: 'Eliminates: Obake (Ultraviolet is a core evidence type — it always leaves UV traces)',
       },
     ],
   },
@@ -289,44 +219,24 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
     title: 'Light & visibility',
     items: [
       {
-        key: 'turned_off_all_lights', active: false,
-        desc: 'Actively turned off all lights',
-        effect: 'Eliminates all ghosts except: Mare',
-      },
-      {
         key: 'turned_on_lights', active: false,
         desc: 'Ghost turned on lights',
         effect: 'Eliminates: Mare (never turns lights on)',
       },
       {
         key: 'hunt_with_lights_on', active: false,
-        desc: 'Hunted while lights were still on',
-        effect: 'Eliminates: Mare (lower hunt threshold only when lights are off)',
-      },
-      {
-        key: 'became_invisible_mid_hunt', active: false,
-        desc: 'Disappeared / became invisible during hunt',
-        effect: 'Eliminates all ghosts except: Phantom',
-      },
-      {
-        key: 'photo_ghost_disappeared', active: false,
-        desc: 'Ghost vanished completely when photographed',
-        effect: 'Eliminates all ghosts except: Phantom',
+        desc: 'Hunted while lights were on',
+        effect: 'Eliminates: Mare (lower hunt threshold only applies when lights are off)',
       },
       {
         key: 'ghost_visible_entire_hunt', active: false,
-        desc: 'Ghost was visible and never flickered out or disappeared during the hunt',
-        effect: 'Eliminates: Phantom (Phantom becomes invisible during hunts when photographed)',
+        desc: 'Ghost remained fully visible throughout the entire hunt',
+        effect: 'Eliminates: Phantom (becomes invisible during hunts when photographed)',
       },
       {
         key: 'ghost_created_mist_fog', active: false,
         desc: 'Ghost created a swirling mist or fog ball ghost event',
-        effect: 'Eliminates: Oni (Oni cannot create atmospheric mist/fog events)',
-      },
-      {
-        key: 'no_mist_events_all_investigation', active: false,
-        desc: 'No mist or fog ghost events occurred throughout the investigation',
-        effect: 'Points to: Oni (cannot create mist) — does not eliminate others',
+        effect: 'Eliminates: Oni (the only ghost incapable of creating mist/fog events)',
       },
     ],
   },
@@ -336,12 +246,12 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
       {
         key: 'smudge_extended_hunt_prevention', active: false,
         desc: 'Smudge stick prevented hunting for an unusually long time (~3 min)',
-        effect: 'Eliminates all ghosts except: Spirit (smudge cooldown is 180 s vs 90 s default)',
+        effect: 'Consistent with: Spirit (180 s vs 90 s default) — Mimic can copy Spirit',
       },
       {
         key: 'smudge_normal_duration', active: false,
-        desc: 'Smudge stick prevented hunting for the normal ~90 seconds',
-        effect: 'Eliminates: Spirit (Spirit gets ~180 s from smudge)',
+        desc: 'Smudge stick prevented hunting for the standard ~90 seconds',
+        effect: 'Eliminates: Spirit (Spirit gets ~180 s from a smudge)',
       },
     ],
   },
@@ -349,19 +259,14 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
     title: 'Fire & candles',
     items: [
       {
-        key: 'hunted_after_flame_out', active: false,
-        desc: 'Hunted immediately after a candle / lighter was extinguished',
-        effect: 'Eliminates all ghosts except: Onryo',
-      },
-      {
         key: 'flames_extinguished_no_hunt', active: false,
         desc: 'Flames were extinguished repeatedly with no hunt triggered',
-        effect: 'Eliminates: Onryo (hunts when flames go out, especially without a crucifix nearby)',
+        effect: 'Eliminates: Onryo (hunts when flames go out, especially without a nearby crucifix)',
       },
       {
         key: 'crosses_prioritised_over_flames', active: false,
-        desc: 'Ghost stopped at crucifix even when flames were nearby',
-        effect: 'Eliminates: Onryo (always prioritises extinguishing flames over responding to a crucifix)',
+        desc: 'Ghost stopped at a crucifix even when flames were nearby',
+        effect: 'Eliminates: Onryo (always prioritises extinguishing flames over a crucifix)',
       },
     ],
   },
@@ -369,14 +274,9 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
     title: 'Sanity & targeting',
     items: [
       {
-        key: 'team_sanity_drained_fast', active: false,
-        desc: 'Whole team lost sanity extremely fast',
-        effect: 'Eliminates most passive ghosts — Points to: Banshee, Jinn, Onryo, Yurei',
-      },
-      {
         key: 'sanity_drained_evenly_across_team', active: false,
         desc: 'All players lost sanity at a roughly equal rate',
-        effect: 'Eliminates: Banshee (one player will always drain faster than others)',
+        effect: 'Eliminates: Banshee (one player always drains faster than the others)',
       },
       {
         key: 'sanity_drained_at_normal_rate', active: false,
@@ -384,34 +284,14 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
         effect: 'Eliminates: Yurei (massive passive drain near ghost), Jinn, Onryo, Banshee',
       },
       {
-        key: 'single_player_sanity_lower', active: false,
-        desc: 'One player lost sanity much faster than everyone else',
-        effect: 'Eliminates all ghosts except: Banshee (fixates on a single target)',
-      },
-      {
-        key: 'ghost_screamed_name', active: false,
-        desc: "Ghost screamed a player's name during an event",
-        effect: 'Eliminates all ghosts except: Banshee',
-      },
-      {
-        key: 'activity_increased_with_more_players', active: false,
-        desc: 'Activity and events noticeably increased when more players were in the building',
-        effect: 'Eliminates most ghosts — Points to: Oni (more active with more players present)',
-      },
-      {
         key: 'activity_unchanged_by_player_count', active: false,
         desc: 'Activity level was the same regardless of how many players were nearby',
-        effect: 'Eliminates: Oni (activity scales with player count)',
-      },
-      {
-        key: 'talking_triggered_more_events', active: false,
-        desc: 'Ghost reacted noticeably more when players were talking nearby',
-        effect: 'Points to: Yokai (talking triggers activity and lowers hunt threshold)',
+        effect: 'Eliminates: Oni (activity scales directly with player count)',
       },
       {
         key: 'talking_had_no_effect', active: false,
-        desc: 'Talking near the ghost had no observable effect on activity or hunting',
-        effect: 'Eliminates: Yokai (Yokai is directly provoked by nearby speech)',
+        desc: 'Talking near the ghost had no observable effect on activity or hunt behaviour',
+        effect: 'Eliminates: Yokai (directly provoked by nearby speech)',
       },
     ],
   },
@@ -421,17 +301,12 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
       {
         key: 'spirit_box_breathing', active: false,
         desc: 'Spirit Box gave a deep breathing / exhale response',
-        effect: 'Eliminates all ghosts except: Deogen (unique Spirit Box response)',
+        effect: 'Consistent with: Deogen — Mimic can copy Deogen. Does not eliminate others.',
       },
       {
         key: 'spirit_box_normal_responses', active: false,
         desc: 'Spirit Box gave normal word or phrase responses only',
         effect: 'Eliminates: Deogen (unique breathing response replaces normal Spirit Box answers)',
-      },
-      {
-        key: 'ghost_always_finds_you', active: false,
-        desc: 'Ghost never lost track of players — could not hide',
-        effect: 'Eliminates all ghosts except: Deogen, Banshee (both have strong location awareness)',
       },
       {
         key: 'ghost_lost_track_of_players', active: false,
@@ -449,29 +324,9 @@ export const BEHAVIOR_SECTIONS: BehaviorSection[] = [
         effect: 'Eliminates: Banshee, Dayan (only always-female ghosts)',
       },
       {
-        key: 'ghost_confirmed_female_model', active: false,
-        desc: 'Ghost name & model confirmed female',
-        effect: 'Points to: Banshee or Dayan — eliminates all male or neutral-model ghosts',
-      },
-      {
-        key: 'ghost_activity_decreased_over_time', active: false,
-        desc: 'Activity, speed & hunt frequency decreased over time',
-        effect: 'Eliminates all ghosts except: Thaye (ages and weakens during investigation)',
-      },
-      {
-        key: 'activity_did_not_decrease', active: false,
-        desc: 'Activity and aggression remained consistent or increased over time',
-        effect: 'Eliminates: Thaye (Thaye always becomes weaker as time passes)',
-      },
-      {
-        key: 'ghost_orb_with_other_evidence', active: false,
-        desc: 'Ghost Orb appeared alongside unexpected evidence (4th evidence)',
-        effect: 'Points to: The Mimic (always shows a false Ghost Orb as 4th evidence)',
-      },
-      {
         key: 'no_extra_ghost_orb', active: false,
-        desc: 'Ghost Orb was absent despite ruling out all orb-carrying ghosts',
-        effect: 'Eliminates: The Mimic (Mimic always produces a Ghost Orb as false evidence)',
+        desc: 'Ghost Orb absent despite ruling out all orb-evidence ghosts',
+        effect: 'Eliminates: The Mimic (always produces a Ghost Orb as false fourth evidence)',
       },
     ],
   },
@@ -629,83 +484,13 @@ export const GHOST_DATA: GhostDefinition[] = [
 
 export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
 
-  // ── Physical interactions ──────────────────────────────────────
-
-  door_not_fully_closed:
-    { eliminates: ['yurei'],
-      note: 'Yurei can only fully open or fully close doors.' },
-
-  stepped_in_salt:
-    { eliminates: ['wraith'],
-      note: 'Wraiths never step in salt.' },
-
-  salt_undisturbed_entire_investigation:
-    { note: 'Consistent with Wraith but does not eliminate others — ghosts can simply avoid salt.' },
-
-  gallu_ignored_salt:
-    { keeps_only: ['gallu'],
-      note: 'Gallu steps in the first pile (triggering enrage), then avoids all subsequent salt.' },
-
-  threw_many_objects_at_once:
-    { keeps_only: ['poltergeist'],
-      note: 'Poltergeist is the only ghost that can hurl multiple objects simultaneously.' },
-
-  threw_one_object_at_a_time:
-    { eliminates: ['poltergeist'],
-      note: 'Poltergeist\'s defining trait is multi-object throws — single throws only rules it out.' },
-
-  six_fingered_print:
-    { keeps_only: ['obake'],
-      note: 'Obake occasionally leaves a 6-fingered handprint — no other ghost does.' },
-
-  fingerprint_disappeared_fast:
-    { keeps_only: ['obake'],
-      note: 'Obake has a 25% chance to erase its own fingerprints shortly after leaving them.' },
-
-  all_fingerprints_persisted:
-    { eliminates: ['obake'],
-      note: 'Obake has a 25% chance to rapidly erase its own prints — consistently persisting prints rules it out.' },
-
-  no_fingerprints_found_at_all:
-    { eliminates: ['obake'],
-      note: 'Obake always leaves UV evidence since Ultraviolet is one of its core evidence types.' },
-
-  // ── Ghost room & roaming ───────────────────────────────────────
-
-  changed_room:
-    { eliminates: ['goryo'],
-      note: 'Goryo never leaves its ghost room.' },
-
-  stayed_in_one_room:
-    { note: 'Consistent with Goryo but does not eliminate others on its own.' },
-
-  interacted_far:
-    { eliminates: ['goryo'],
-      note: 'Goryo interactions are strictly local to its room.' },
-
-  dots_not_on_camera:
-    { eliminates: ['goryo'],
-      note: 'Goryo D.O.T.S only appear through a video camera.' },
-
-  dots_only_on_camera:
-    { keeps_only: ['goryo'],
-      note: 'No other ghost restricts D.O.T.S visibility to camera only.' },
-
-  breaker_off_repeatedly:
-    { keeps_only: ['jinn', 'mare'],
-      note: 'Jinn and Mare both interact heavily with the breaker.' },
-
-  breaker_left_alone:
-    { eliminates: ['jinn', 'mare'],
-      note: 'Jinn heavily targets the breaker; Mare turns it off to darken the map.' },
-
   // ── Hunt threshold ─────────────────────────────────────────────
 
   hunt_above_70:
     { eliminates: ['spirit', 'wraith', 'phantom', 'poltergeist', 'jinn', 'mare', 'revenant',
                    'shade', 'yurei', 'oni', 'yokai', 'hantu', 'goryo', 'myling', 'onryo',
                    'twins', 'raiju', 'obake', 'mimic', 'moroi', 'deogen', 'thaye', 'dayan'],
-      note: 'Only Demon (any sanity), Obambo (aggressive, ~65%), and Gallu (enraged, ~60%) can hunt above 70%.' },
+      note: 'Only Demon (any sanity), Obambo (aggressive ~65%), and Gallu (enraged ~60%) can hunt above 70%.' },
 
   hunt_above_50:
     { eliminates: ['shade', 'yokai', 'yurei', 'myling', 'thaye'],
@@ -713,15 +498,20 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
 
   hunt_never_above_35:
     { eliminates: ['demon', 'obambo', 'gallu', 'yokai', 'yurei', 'myling'],
-      note: 'Points to Shade — all high-aggression and average-threshold ghosts are ruled out.' },
+      note: 'All high-aggression and average-threshold ghosts are ruled out. Consistent with Shade.' },
 
   refused_hunt_low_sanity:
-    { keeps_only: ['thaye', 'obambo', 'shade'],
-      note: 'Thaye weakens over time. Obambo calm threshold ~10%. Shade needs very low sanity.' },
+    { eliminates: ['spirit', 'wraith', 'phantom', 'poltergeist', 'banshee', 'jinn', 'mare',
+                   'revenant', 'demon', 'yurei', 'oni', 'yokai', 'hantu', 'goryo', 'myling',
+                   'onryo', 'twins', 'raiju', 'obake', 'mimic', 'moroi', 'deogen', 'dayan', 'gallu'],
+      note: 'Consistent with Thaye (weakens), Obambo (calm ~10% threshold), or Shade (≤35% threshold).' },
 
   hunt_no_warning_sounds:
-    { keeps_only: ['myling'],
-      note: 'Myling is nearly silent during hunts — all other ghosts produce audible footsteps.' },
+    { eliminates: ['spirit', 'wraith', 'phantom', 'poltergeist', 'banshee', 'jinn', 'mare',
+                   'revenant', 'shade', 'demon', 'yurei', 'oni', 'yokai', 'hantu', 'goryo',
+                   'onryo', 'twins', 'raiju', 'obake', 'moroi', 'deogen', 'thaye',
+                   'obambo', 'dayan', 'gallu'],
+      note: 'Myling is nearly silent during hunts. Mimic is NOT eliminated — it can copy Myling.' },
 
   // ── Hunt speed & movement ──────────────────────────────────────
 
@@ -729,45 +519,24 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
     { eliminates: ['raiju', 'deogen', 'moroi', 'jinn', 'revenant', 'hantu', 'dayan'],
       note: 'All of these ghosts have notable speed deviations from base movement speed.' },
 
-  hunt_fast_chase_slow_roam:
-    { keeps_only: ['revenant'],
-      note: 'Revenant ~3 m/s chasing, ~1 m/s roaming — no other ghost has this extreme split.' },
-
   consistent_speed_entire_hunt:
     { eliminates: ['revenant', 'dayan', 'obambo', 'gallu', 'moroi'],
       note: 'All of these ghosts change speed noticeably mid-hunt under certain conditions.' },
 
-  hunt_speed_changed_mid_hunt:
-    { keeps_only: ['obambo', 'dayan', 'gallu'],
-      note: 'Obambo flips states. Dayan reacts to player movement. Gallu enrages/exhausts.' },
-
   hunt_slowed_when_player_still:
-    { keeps_only: ['dayan'],
-      note: 'Dayan drops to 1.2 m/s when the closest player stands still.' },
+    { eliminates: ['spirit', 'wraith', 'phantom', 'poltergeist', 'banshee', 'jinn', 'mare',
+                   'revenant', 'shade', 'demon', 'yurei', 'oni', 'yokai', 'hantu', 'goryo',
+                   'myling', 'onryo', 'twins', 'raiju', 'obake', 'moroi', 'deogen', 'thaye',
+                   'obambo', 'gallu'],
+      note: 'Only Dayan slows when the nearest player stands still. Mimic NOT eliminated — can copy Dayan.' },
 
-  ghost_faster_near_moving_player:
-    { keeps_only: ['dayan'],
-      note: 'Dayan reaches 2.25 m/s when the closest player walks within 10 m.' },
+  no_slowdown_when_close:
+    { eliminates: ['deogen'],
+      note: 'Deogen always slows to ~0.4 m/s when it reaches a player.' },
 
   speed_unaffected_by_electronics:
     { eliminates: ['raiju'],
       note: 'Raiju\'s defining trait is accelerating near active electronics.' },
-
-  hunt_faster_near_electronics:
-    { keeps_only: ['raiju'],
-      note: 'Raiju accelerates near active electronics — no other ghost does this.' },
-
-  hunt_fast_chases_slow_close:
-    { keeps_only: ['deogen'],
-      note: 'Deogen slows to ~0.4 m/s at close range — no other ghost does this.' },
-
-  no_slowdown_when_close:
-    { eliminates: ['deogen'],
-      note: 'Deogen always slows dramatically when it reaches a player.' },
-
-  ghost_faster_at_low_sanity:
-    { keeps_only: ['moroi', 'jinn'],
-      note: 'Moroi fastest at very low sanity (3.71 m/s). Jinn fast with breaker on.' },
 
   speed_unaffected_by_sanity:
     { eliminates: ['moroi'],
@@ -784,12 +553,7 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
       note: 'Obambo aggressive-state hunts end ~20% earlier than normal.' },
 
   hunt_duration_20pct_short:
-    { keeps_only: ['obambo'],
-      note: 'Obambo hunts end ~20% earlier in aggressive state.' },
-
-  ghost_phases_high_low_activity:
-    { keeps_only: ['obambo'],
-      note: 'Obambo cycles calm↔aggressive every ~2 minutes — no other ghost does this.' },
+    { note: 'Consistent with Obambo (aggressive state). Mimic can also copy this. Does not eliminate others.' },
 
   activity_was_constant:
     { eliminates: ['obambo', 'thaye'],
@@ -799,11 +563,14 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
     { eliminates: ['obambo'],
       note: 'Obambo has a clearly observable ~2-minute calm↔aggressive phase cycle.' },
 
+  activity_did_not_decrease:
+    { eliminates: ['thaye'],
+      note: 'Thaye always becomes weaker — constant or increasing activity rules it out.' },
+
   // ── Smudge stick / sage ────────────────────────────────────────
 
   smudge_extended_hunt_prevention:
-    { keeps_only: ['spirit'],
-      note: 'Spirit\'s smudge cooldown is ~180 s; all other ghosts get ~90 s.' },
+    { note: 'Consistent with Spirit (180 s cooldown vs 90 s default). Mimic can copy Spirit. Does not eliminate others.' },
 
   smudge_normal_duration:
     { eliminates: ['spirit'],
@@ -811,27 +578,68 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
 
   // ── Gallu — protective equipment ──────────────────────────────
 
-  incense_sped_ghost_up:
-    { keeps_only: ['gallu'],
-      note: 'Incense triggers Gallu\'s enraged state rather than repelling it.' },
-
   incense_worked_normally:
     { eliminates: ['gallu'],
       note: 'Gallu becomes enraged (faster) when incensed — normal repelling rules it out.' },
-
-  crucifix_felt_weaker:
-    { keeps_only: ['gallu', 'demon'],
-      note: 'Gallu enraged state weakens protective equipment. Demon has a smaller crucifix radius.' },
 
   crucifix_worked_at_full_range:
     { eliminates: ['demon', 'gallu'],
       note: 'Demon has a smaller effective crucifix radius. Gallu (enraged) weakens all protective equipment.' },
 
-  // ── Light & visibility ─────────────────────────────────────────
+  gallu_ignored_salt:
+    { eliminates: ['spirit', 'wraith', 'phantom', 'poltergeist', 'banshee', 'jinn', 'mare',
+                   'revenant', 'shade', 'demon', 'yurei', 'oni', 'yokai', 'hantu', 'goryo',
+                   'myling', 'onryo', 'twins', 'raiju', 'obake', 'moroi', 'deogen', 'thaye',
+                   'obambo', 'dayan'],
+      note: 'Only Gallu steps in the first salt pile (triggering enrage) then avoids all subsequent piles. Mimic NOT eliminated — can copy Gallu.' },
 
-  turned_off_all_lights:
-    { keeps_only: ['mare'],
-      note: 'Mare actively turns off lights — no other ghost does this systematically.' },
+  // ── Ghost room & roaming ───────────────────────────────────────
+
+  changed_room:
+    { eliminates: ['goryo'],
+      note: 'Goryo never leaves its ghost room.' },
+
+  interacted_far:
+    { eliminates: ['goryo'],
+      note: 'Goryo interactions are strictly local to its room.' },
+
+  dots_not_on_camera:
+    { eliminates: ['goryo'],
+      note: 'Goryo D.O.T.S only appear through a video camera.' },
+
+  breaker_left_alone:
+    { eliminates: ['jinn', 'mare'],
+      note: 'Jinn heavily targets the breaker; Mare turns it off to darken the map.' },
+
+  // ── Physical interactions ──────────────────────────────────────
+
+  door_not_fully_closed:
+    { eliminates: ['yurei'],
+      note: 'Yurei can only fully open or fully close doors.' },
+
+  stepped_in_salt:
+    { eliminates: ['wraith'],
+      note: 'Wraiths never step in salt.' },
+
+  salt_undisturbed_entire_investigation:
+    { note: 'Consistent with Wraith but does not eliminate others — any ghost may simply avoid salt.' },
+
+  threw_one_object_at_a_time:
+    { eliminates: ['poltergeist'],
+      note: 'Poltergeist\'s defining trait is multi-object throws — single throws only rules it out.' },
+
+  six_fingered_print:
+    { note: 'Consistent with Obake only. Mimic can copy Obake. Does not eliminate others.' },
+
+  all_fingerprints_persisted:
+    { eliminates: ['obake'],
+      note: 'Obake has a 25% chance to rapidly erase its own prints — consistently persisting prints rules it out.' },
+
+  no_fingerprints_found_at_all:
+    { eliminates: ['obake'],
+      note: 'Obake always leaves UV evidence — Ultraviolet is a core evidence type for it.' },
+
+  // ── Light & visibility ─────────────────────────────────────────
 
   turned_on_lights:
     { eliminates: ['mare'],
@@ -841,44 +649,25 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
     { eliminates: ['mare'],
       note: 'Mare only hunts at its lower threshold when lights are off.' },
 
-  became_invisible_mid_hunt:
-    { keeps_only: ['phantom'],
-      note: 'Phantom can disappear entirely during hunts.' },
-
-  photo_ghost_disappeared:
-    { keeps_only: ['phantom'],
-      note: 'Photographing a Phantom causes it to temporarily vanish.' },
-
   ghost_visible_entire_hunt:
     { eliminates: ['phantom'],
       note: 'Phantom becomes invisible during hunts — remaining fully visible rules it out.' },
 
   ghost_created_mist_fog:
     { eliminates: ['oni'],
-      note: 'Oni is the only ghost that cannot create atmospheric mist or fog ghost events.' },
-
-  no_mist_events_all_investigation:
-    { note: 'Points to Oni (cannot create mist) but does not eliminate others — mist events are not guaranteed.' },
+      note: 'Oni is the only ghost incapable of creating atmospheric mist or fog ghost events.' },
 
   // ── Fire & candles ─────────────────────────────────────────────
 
-  hunted_after_flame_out:
-    { keeps_only: ['onryo'],
-      note: 'Onryo is triggered by flames being extinguished — no other ghost has this behaviour.' },
-
   flames_extinguished_no_hunt:
     { eliminates: ['onryo'],
-      note: 'Onryo hunts when flames go out (especially without a crucifix nearby) — no reaction rules it out.' },
+      note: 'Onryo hunts when flames go out (especially without a nearby crucifix) — no reaction rules it out.' },
 
   crosses_prioritised_over_flames:
     { eliminates: ['onryo'],
       note: 'Onryo always prioritises extinguishing flames over responding to a crucifix.' },
 
   // ── Sanity & targeting ─────────────────────────────────────────
-
-  team_sanity_drained_fast:
-    { keeps_only: ['banshee', 'jinn', 'onryo', 'yurei'],
-      note: 'These ghosts all have above-average passive sanity drain.' },
 
   sanity_drained_evenly_across_team:
     { eliminates: ['banshee'],
@@ -888,25 +677,9 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
     { eliminates: ['yurei', 'jinn', 'onryo', 'banshee'],
       note: 'All of these ghosts have significantly above-average passive sanity drain.' },
 
-  single_player_sanity_lower:
-    { keeps_only: ['banshee'],
-      note: 'Banshee fixates on one target — only that player drains significantly faster.' },
-
-  ghost_screamed_name:
-    { keeps_only: ['banshee'],
-      note: 'Banshee may scream a player\'s name during a ghost event — no other ghost does this.' },
-
-  activity_increased_with_more_players:
-    { keeps_only: ['oni'],
-      note: 'Oni is more active the more players are present — a strong indicator.' },
-
   activity_unchanged_by_player_count:
     { eliminates: ['oni'],
       note: 'Oni\'s activity scales directly with the number of players in the building.' },
-
-  talking_triggered_more_events:
-    { keeps_only: ['yokai'],
-      note: 'Yokai is directly provoked by nearby speech — no other ghost has this trigger.' },
 
   talking_had_no_effect:
     { eliminates: ['yokai'],
@@ -915,16 +688,11 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
   // ── Deogen tells ───────────────────────────────────────────────
 
   spirit_box_breathing:
-    { keeps_only: ['deogen'],
-      note: 'Deogen gives a unique deep breathing response on the Spirit Box.' },
+    { note: 'Consistent with Deogen only. Mimic can copy Deogen. Does not eliminate others.' },
 
   spirit_box_normal_responses:
     { eliminates: ['deogen'],
       note: 'Deogen\'s Spirit Box response is always a distinctive breathing sound — normal responses rule it out.' },
-
-  ghost_always_finds_you:
-    { keeps_only: ['deogen', 'banshee'],
-      note: 'Deogen always knows the exact location of all players. Banshee locks onto its target.' },
 
   ghost_lost_track_of_players:
     { eliminates: ['deogen'],
@@ -935,22 +703,6 @@ export const BEHAVIOR_RULES: Record<BehaviorKey, BehaviorRule> = {
   ghost_female_model:
     { eliminates: ['banshee', 'dayan'],
       note: 'Only Banshee and Dayan always present as female.' },
-
-  ghost_confirmed_female_model:
-    { keeps_only: ['banshee', 'dayan'],
-      note: 'Only Banshee and Dayan are always female.' },
-
-  ghost_activity_decreased_over_time:
-    { keeps_only: ['thaye'],
-      note: 'Thaye ages and weakens throughout the investigation — no other ghost does this.' },
-
-  activity_did_not_decrease:
-    { eliminates: ['thaye'],
-      note: 'Thaye always becomes weaker — constant or increasing activity rules it out.' },
-
-  ghost_orb_with_other_evidence:
-    { keeps_only: ['mimic', 'banshee', 'hantu', 'obake', 'raiju', 'onryo', 'yurei', 'yokai', 'thaye', 'revenant', 'shade', 'mare', 'dayan'],
-      note: 'The Mimic always shows a Ghost Orb as false fourth evidence alongside its other three.' },
 
   no_extra_ghost_orb:
     { eliminates: ['mimic'],
